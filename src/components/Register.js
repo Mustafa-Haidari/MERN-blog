@@ -10,7 +10,6 @@ const Register = () => {
   const lastnameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
-  const checkboxRef = useRef();
 
   const formHandler = (e) => {
     e.preventDefault();
@@ -26,23 +25,18 @@ const Register = () => {
       body: JSON.stringify(data),
     })
       .then((response) => {
-        console.log(response);
-        if (!response.ok) {
-          throw new Error("Something went wrong");
-        }
         return response.json();
       })
       .then((data) => {
         if (data.error) {
           toast.error(data.error);
         } else {
-          console.log(data);
-          // setUserInfo(data);
-          // navigate("/");
+          toast.success(data.message);
         }
       })
       .catch((error) => {
-        console.log(error);
+        console.log("Error:", error);
+        toast.error(error);
       });
   };
 
