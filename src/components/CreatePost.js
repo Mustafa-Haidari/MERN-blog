@@ -20,7 +20,9 @@ const CreatePost = () => {
       body: data,
       credentials: "include",
     }).then((response) => {
-      navigate("/");
+      if (response.ok) {
+        navigate("/");
+      }
     });
   };
 
@@ -39,6 +41,7 @@ const CreatePost = () => {
               onChange={(e) => setTitle(e.target.value)}
               className="form-control"
               id="postTitle"
+              required
             />
           </div>
           <div className="mb-3">
@@ -51,6 +54,7 @@ const CreatePost = () => {
               onChange={(e) => setFiles(e.target.files)}
               id="formFile"
               aria-describedby="imageNote"
+              required
             />
             <div id="imageNote" className="form-text">
               Please only select 1 file

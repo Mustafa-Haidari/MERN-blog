@@ -38,6 +38,7 @@ const CreatePostEditor = ({ content, setContent }) => {
       onChange={setContent}
       modules={modules}
       formats={formats}
+      required
     />
   );
 };
