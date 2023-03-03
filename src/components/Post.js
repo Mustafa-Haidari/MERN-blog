@@ -5,7 +5,7 @@ import moment from "moment";
 const Post = ({ post }) => {
   const { title, cover, author, createdAt, _id } = post;
   return (
-    <div className="col-lg-3 col-md-6 col-sm-12 mb-4">
+    <div className="col-lg-4 col-md-6 col-sm-12 mb-4">
       <div className="card">
         <Link to={`/post/${_id}`}>
           <img
