@@ -1,7 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Post from "./Post";
 
 const Home = () => {
-  return <div>Home</div>;
+  const [posts, setPosts] = useState({});
+  useEffect(() => {
+    fetch("http://localhost:8080/api/post", {
+      credentials: "include",
+    }).then((response) => {
+      response.json().then((data) => {
+        setPosts(data);
+      });
+    });
+  }, []);
+  return (
+    <div className="container-flui">
+      <div className="row">
+        {posts.length > 0 ? (
+          posts.map((post) => {
+            return <Post key={post._id} post={post} />;
+          })
+        ) : (
+          <h3>No posts available</h3>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default Home;
