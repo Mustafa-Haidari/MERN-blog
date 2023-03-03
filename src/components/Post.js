@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 
 const Post = ({ post }) => {
-  const { title, content, cover, author, createdAt, _id } = post;
-  console.log(post);
+  const { title, cover, author, createdAt, _id } = post;
   return (
     <div className="col-lg-3 col-md-6 col-sm-12 mb-4">
       <div className="card">

@@ -2,12 +2,12 @@ import React, { useContext, useEffect } from "react";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "./user-context";
 
 const Header = () => {
   const { userInfo, setUserInfo } = useContext(AuthContext);
-  console.log(userInfo);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = document.cookie
@@ -35,6 +35,7 @@ const Header = () => {
       response.json().then((data) => {
         if (data.loggedout) {
           setUserInfo(null);
+          navigate("/");
         }
       });
     });
@@ -50,11 +51,7 @@ const Header = () => {
         <Navbar.Collapse className="justify-content-end  mt-md-2">
           {email && (
             <>
-              <Navbar.Text>
-                <Link to={"/"} className="me-2">
-                  {userInfo.firstname}
-                </Link>
-              </Navbar.Text>
+              <Navbar.Text className="me-2">{userInfo.firstname}</Navbar.Text>
               <Link to="/create">
                 <Button variant="primary" className="me-2 btn-sm">
                   Create new post
