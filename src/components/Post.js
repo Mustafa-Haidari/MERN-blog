@@ -9,7 +9,7 @@ const Post = ({ post }) => {
       <div className="card">
         <Link to={`/post/${_id}`}>
           <img
-            src={`http://localhost:8080/${cover}`}
+            src={process.env.REACT_APP_API + cover}
             className="card-img-top"
           />
         </Link>

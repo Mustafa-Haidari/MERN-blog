@@ -19,7 +19,7 @@ const Login = () => {
       email: emailRef.current.value,
       password: passwordRef.current.value,
     };
-    fetch("http://localhost:8080/api/login", {
+    fetch(`${process.env.REACT_APP_API}api/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),

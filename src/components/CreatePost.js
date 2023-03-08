@@ -15,7 +15,7 @@ const CreatePost = () => {
     data.set("files", files[0]);
     data.set("content", content);
     console.log(data);
-    fetch("http://localhost:8080/api/post", {
+    fetch(`${process.env.REACT_APP_API}api/post`, {
       method: "POST",
       body: data,
       credentials: "include",

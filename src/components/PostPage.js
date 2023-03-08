@@ -12,7 +12,7 @@ const PostPage = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/post/${id}`).then((response) => {
+    fetch(`${process.env.REACT_APP_API}api/post/${id}`).then((response) => {
       response.json().then((data) => {
         setPostInfo(data);
       });
@@ -20,7 +20,7 @@ const PostPage = () => {
   }, []);
 
   const deletePost = (e) => {
-    fetch(`http://localhost:8080/api/post/${id}`, {
+    fetch(`${process.env.REACT_APP_API}api/post/${id}`, {
       method: "DELETE",
     })
       .then((response) => {

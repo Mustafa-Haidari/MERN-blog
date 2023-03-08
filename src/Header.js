@@ -15,7 +15,7 @@ const Header = () => {
       .find((row) => row.startsWith("token="))
       ?.split("=")[1];
     if (token) {
-      fetch("http://localhost:8080/api/profile", {
+      fetch(`${process.env.REACT_APP_API}api/profile`, {
         credentials: "include",
       })
         .then((response) => {
@@ -30,7 +30,7 @@ const Header = () => {
   }, []);
 
   const logout = () => {
-    fetch("http://localhost:8080/api/logout", {
+    fetch(`${process.env.REACT_APP_API}api/logout`, {
       credentials: "include",
     }).then((response) => {
       response.json().then((data) => {

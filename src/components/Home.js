@@ -4,7 +4,7 @@ import Post from "./Post";
 const Home = () => {
   const [posts, setPosts] = useState({});
   useEffect(() => {
-    fetch("http://localhost:8080/api/post", {
+    fetch(`${process.env.REACT_APP_API}api/post`, {
       credentials: "include",
     }).then((response) => {
       response.json().then((data) => {

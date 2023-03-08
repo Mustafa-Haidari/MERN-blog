@@ -10,7 +10,7 @@ const EditPage = () => {
   const [files, setFiles] = useState();
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/post/${id}`).then((response) => {
+    fetch(`${process.env.REACT_APP_API}api/post/${id}`).then((response) => {
       response.json().then((data) => {
         setTitle(data.title);
         setContent(data.content);
@@ -27,7 +27,7 @@ const EditPage = () => {
     if (files?.[0]) {
       data.set("file", files?.[0]);
     }
-    fetch("http://localhost:8080/api/post", {
+    fetch(`${process.env.REACT_APP_API}api/post`, {
       method: "PUT",
       body: data,
       credentials: "include",
