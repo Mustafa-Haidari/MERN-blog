@@ -6,7 +6,7 @@ import { AuthContext } from "../user-context";
 import moment from "moment";
 
 const PostPage = () => {
-  const [postInfo, setPostInfo] = useState(null);
+  const [postInfo, setPostInfo] = useState("");
   const navigate = useNavigate();
   const { userInfo } = useContext(AuthContext);
   const { id } = useParams();
@@ -36,6 +36,9 @@ const PostPage = () => {
   return (
     <>
       <ToastContainer />
+      <Link to="/">
+        <button className="btn btn-primary mt-2 mb-3 btn-sm">Back</button>
+      </Link>
       {postInfo && (
         <div className="card">
           <div className="row">
@@ -57,7 +60,7 @@ const PostPage = () => {
                 <div className="author">
                   {postInfo?.author.firstname + " " + postInfo?.author.lastname}
                 </div>
-                {userInfo.id === postInfo?.author._id && (
+                {userInfo && userInfo.id === postInfo?.author._id && (
                   <>
                     <Link to={`/edit/${postInfo?._id}`}>
                       <button className="btn btn-warning d-inline-felx btn-sm mt-2 me-2">

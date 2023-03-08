@@ -28,6 +28,7 @@ const Header = () => {
         });
     }
   }, []);
+
   const logout = () => {
     fetch("http://localhost:8080/api/logout", {
       credentials: "include",
@@ -49,9 +50,11 @@ const Header = () => {
         <Navbar.Brand href="/">MERN Blog App</Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end  mt-md-2">
-          {email && (
+          {userInfo && (
             <>
-              <Navbar.Text className="me-2">{userInfo.firstname}</Navbar.Text>
+              <Navbar.Text className="me-2">
+                Signed in as {userInfo.firstname}
+              </Navbar.Text>
               <Link to="/create">
                 <Button variant="primary" className="me-2 btn-sm">
                   Create new post
